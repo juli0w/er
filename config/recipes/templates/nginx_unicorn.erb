@@ -3,8 +3,8 @@ upstream unicorn {
 }
 
 server {
-  listen 80 default deferred;
-  server_name estoque.kimitachi.com.br;
+  listen 81 default deferred;
+  server_name 50.116.26.208;
   root <%= current_path %>/public;
 
   if (-f $document_root/system/maintenance.html) {
