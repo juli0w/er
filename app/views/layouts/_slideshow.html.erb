@@ -1,0 +1,39 @@
+<div class="band featured">
+  <section class="container">
+    <div id="featured" >
+      <ul class="ui-tabs-nav">
+        <li class="ui-tabs-nav-item ui-tabs-selected ui-tabs-title" id="nav-header">
+          <strong>
+            <%= image_tag "noticias.png" %>
+            Notícias
+          </strong>
+        </li>
+
+        <% @articles.each do |article| %>
+          <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1">
+            <a href="#fragment-<%= article.id %>">
+              <span class="ui-date">
+                <span class="ui-day"><%= I18n.localize(article.created_at, :format => "%d") %></span>
+                <span class="ui-month"><%= I18n.localize(article.created_at, :format => "%b") %></span>
+              </span>
+              <span class="ui-text"><%= article.title %></span>
+            </a>
+          </li>
+        <% end %>
+
+        <%= link_to "Ver todos", articles_path, class: "ui-read-more" %>
+      </ul>
+      
+      <% @articles.each do |article| %>
+        <div id="fragment-<%= article.id %>" class="ui-tabs-panel" style="">
+          <%= image_tag article.image %>
+          <div class="info" >
+          <h2><a href="#"><%= article.title %></a></h2>
+            <p style="line-height: 2;"><%= article.excerpt %></p><p><a href="#" >Leia na íntegra</a></p>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </section>
+</div>

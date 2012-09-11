@@ -1,0 +1,4 @@
+check process <%= application %>_resque_worker
+    with pidfile <%= deploy_to %>/current/tmp/pids/resque_worker.pid
+    start program = "/bin/sh -c '/home/<%= user %>/bin/start_resque_worker.sh'" as uid <%= user %> and gid <%= user %>
+    stop program = "/bin/sh -c 'cd <%= deploy_to %>/current && kill -s quit `cat tmp/pids/resque_worker.pid` && rm -f tmp/pids/resque_worker.pid; exit 0;'"

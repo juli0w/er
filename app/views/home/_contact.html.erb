@@ -1,0 +1,49 @@
+<div class="band">
+  <section class="container main-page contact">
+    <div class="eight columns">
+      <div class="main-content">
+        <h4>Deixe sua mensagem</h4>
+        <p class="contact-text">Se você tem alguma dúvida, sugestão ou quiser saber um pouco mais sobre quem somos e o que fazemos, entre em contato conosco por meio do formulário abaixo.</p>
+
+        <%= form_for Message.new, method: :post, class: 'rounded' do |f| %>
+          <div class="field">
+              <label for="name">Nome:</label>
+              <%= f.text_field :name %>
+              <p class="hint">Preencha com uma identificação</p>
+          </div>
+           
+          <div class="field">
+              <label for="email">Email:</label>
+              <%= f.text_field :email %>
+              <p class="hint">Preencha com seu email (não será divulgado)</p>
+          </div>
+           
+          <div class="field">
+              <label for="message">Mensagem:</label>
+              <%= f.text_area :content %>
+              <p class="hint">Escreva sua mensagem</p>
+          </div>
+           
+          <%= f.submit "Enviar", class: "button" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="eight columns">
+      <div class="main-content">
+        <h4>Nosso contato</h4>
+        <p class="contact-text">Entre em contato ou venha nos conhecer no seguinte endereço:</p>
+        <p class="contact-infos">
+          <strong>Endereço:</strong>
+          <br />Rua Senador Petrônio Portela, 200
+          <br />Bairro Distrito Industral, Joinville/SC
+          <br />(47) 3435-6890 / (47) 3435-5400
+          <br /><%= link_to "contato@expressorasante.com.br", "mailto:contato@expressorasante.com.br" %>
+        </p>
+        <p>
+          <iframe width="430" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.br/maps?q=R.+Senador+Petr%C3%B4nio+Portela,+n%C2%BA+200&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Sen.+Petr%C3%B4nio+Portela,+200+-+Zona+Industrial+Norte,+Joinville+-+Santa+Catarina,+89219-575&amp;gl=br&amp;z=14&amp;vpsrc=0&amp;ll=-26.261758,-48.86745&amp;output=embed"></iframe>
+          <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=430x300&sensor=false&zoom=14&markers=-26.261759%2C-48.867468", class: "contact-map" %>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

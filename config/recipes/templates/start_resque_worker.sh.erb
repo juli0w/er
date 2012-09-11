@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+USER=<%= user %>
+APP_PATH=<%= deploy_to %>/current
+PATH=/home/$USER/.rbenv/bin:/home/$USER/.rbenv/shims:$PATH
+RAILS_ENV=production
+
+cd $APP_PATH
+RAILS_ENV=$RAILS_ENV rake environment resque:work QUEUE=* & > $APP_PATH/log/resque_worker.log
+echo $! > $APP_PATH/tmp/pids/resque_worker.pid
