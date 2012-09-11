@@ -26,3 +26,5 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup"
+
+set :shared_children, shared_children + %w{public/uploads}
