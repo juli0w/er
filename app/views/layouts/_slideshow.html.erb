@@ -29,7 +29,7 @@
           <%= image_tag article.image %>
           <div class="info" >
           <h2><a href="#"><%= article.title %></a></h2>
-            <p style="line-height: 2;"><%= article.excerpt %></p><p><a href="#" >Leia na íntegra</a></p>
+            <p style="line-height: 2;"><%= article.excerpt %></p><p><%= link_to 'Leia na íntegra', article %></p>
           </div>
         </div>
       <% end %>

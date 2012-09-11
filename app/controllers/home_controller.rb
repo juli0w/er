@@ -15,10 +15,4 @@ class HomeController < ApplicationController
 
   def seguranca
   end
-
-private
-
-  def load_articles
-    @articles = Article.last(5)
-  end
 end

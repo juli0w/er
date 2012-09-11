@@ -11,19 +11,9 @@
             <span class="ui-month"><%= I18n.localize(article.created_at, :format => "%b") %></span>
           </span>
 
-          <%= content_tag :p, article.title, class: "article-title" %>
-
-          <hr class="hr" />
-
-          <figure class="article-image">
-            <%= image_tag article.image %>
-          </figure>
-
-          <hr class="hr" />
-
-          <small class="article-excerpt"><%= article.excerpt %></small>
-          
-          <hr class="hr" />
+          <%= link_to article.title, article, class: "article-title" %>
+          <br />
+          <p class="contact-text"><%= article.excerpt %></p>
 
           <span class="article-content">
             <%= simple_format article.content %>
