@@ -7,7 +7,16 @@ gem 'carrierwave'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+group :development do
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
+end
+
+
+
 gem 'activeadmin'
 
 # Gems used only for assets and not required
