@@ -3,7 +3,7 @@ upstream unicorn {
 }
 
 server {
-  listen 81 default deferred;
+  listen 8080 default deferred;
   server_name 50.116.26.208;
   root <%= current_path %>/public;
 
