@@ -14,7 +14,8 @@ set -e
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=<%= current_path %>
 PID=<%= unicorn_pid %>
-CMD="cd <%= current_path %>; bundle exec unicorn_rails -D -c <%= unicorn_config %> -E production"
+# CMD="cd <%= current_path %>; bundle exec unicorn_rails -D -c <%= unicorn_config %> -E production"
+CMD="cd <%= current_path %>; bundle exec rails s -e production -p 8080 --daemon"
 AS_USER=<%= unicorn_user %>
 set -u
 
