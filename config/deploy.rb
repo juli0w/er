@@ -27,20 +27,17 @@ ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup"
 
-namespace :uploads do
+namespace :assets do
 
-  desc "copy the assets for the shared path"
-  task :copy, :except => { :no_release => true } do
-    run "cp -r #{current_path}/public/uploads #{shared_path}/public"
-    run "rm -rf #{current_path}/public/uploads"
+  task :symlink, :roles => :app do
+    assets.create_dir
+    run <<-CMD
+      rm -rf  #{release_path}/public/images/upload &&
+      ln -nfs #{shared_path}/upload #{release_path}/public/images/upload
+    CMD
   end
 
-  desc "get the assets back"
-  task :get, :except => { :no_release => true } do
-    run "cp -r #{shared_path}/public/uploads #{current_path}/public"
+  task :create_dir, :roles => :app do
+    run "mkdir -p #{shared_path}/upload"
   end
-
-  after       "deploy:finalize_update", "uploads:get"
-  on :start,  "uploads:copy"
-
 end
