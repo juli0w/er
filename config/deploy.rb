@@ -33,7 +33,7 @@ namespace :assets  do
   namespace :symlinks do
     desc "Setup application symlinks for shared assets"
     task :setup, :roles => [:app, :web] do
-      shared_assets.each { |link| run "mv -r #{shared_path}/#{link}" }
+      shared_assets.each { |link| run "mv #{shared_path}/#{link}" }
     end
 
     desc "Link assets for current deploy to the shared location"
