@@ -27,26 +27,36 @@ ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup"
 
-set :shared_assets, %w{public/uploads}
+namespace :uploads do
 
-namespace :assets  do
-  namespace :symlinks do
-    desc "Setup application symlinks for shared assets"
-    task :setup, :roles => [:app, :web] do
-      shared_assets.each { |link| run "mv -f #{link} #{shared_path}/#{link}" }
-    end
-
-    desc "Link assets for current deploy to the shared location"
-    task :update, :roles => [:app, :web] do
-      shared_assets.each { |link| run "ln -nfs #{shared_path}/#{link} #{release_path}/#{link}" }
-    end
+  desc <<-EOD
+    Creates the upload folders unless they exist
+    and sets the proper upload permissions.
+  EOD
+  task :setup, :except => { :no_release => true } do
+    dirs = uploads_dirs.map { |d| File.join(shared_path, d) }
+    run "#{try_sudo} mkdir -p #{dirs.join(' ')} && #{try_sudo} chmod g+w #{dirs.join(' ')}"
   end
-end
 
-before "deploy:update_code" do
-  assets.symlinks.setup
-end
+  desc <<-EOD
+    [internal] Creates the symlink to uploads shared folder
+    for the most recently deployed version.
+  EOD
+  task :symlink, :except => { :no_release => true } do
+    run "rm -rf #{release_path}/public/uploads"
+    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+  end
 
-before "deploy:assets:symlink" do
-  assets.symlinks.update
+  desc <<-EOD
+    [internal] Computes uploads directory paths
+    and registers them in Capistrano environment.
+  EOD
+  task :register_dirs do
+    set :uploads_dirs,    %w(uploads)
+    set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
+  end
+
+  after       "deploy:finalize_update", "uploads:symlink"
+  on :start,  "uploads:register_dirs"
+
 end
