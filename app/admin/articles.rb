@@ -5,6 +5,9 @@ ActiveAdmin.register Article do
     default_actions                   
   end
 
+  filter :title
+  filter :content
+
   show do |article|
     attributes_table do
       row :title

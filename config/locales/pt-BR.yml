@@ -1,5 +1,7 @@
 # encoding: UTF-8
 pt-BR:
+  default:
+    create: Criar
   date:
     abbr_day_names:
     - Dom
@@ -207,6 +209,7 @@ pt-BR:
     models:
       admin_user: Usuário
       article: Novidade
+      message: Mensagem
     attributes:
       article:
         title: Título
