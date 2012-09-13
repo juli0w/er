@@ -31,8 +31,8 @@ namespace :uploads do
 
   desc "copy the assets for the shared path"
   task :copy, :except => { :no_release => true } do
-    run "cp -r #{release_path}/public/uploads #{shared_path}/public"
-    run "rm -rf #{release_path}/public/uploads"
+    run "cp -r #{current_path}/public/uploads #{shared_path}/public"
+    run "rm -rf #{current_path}/public/uploads"
   end
 
   desc "get the assets back"
