@@ -43,10 +43,10 @@ namespace :assets  do
   end
 end
 
-before "deploy:setup" do
+before "deploy:update_code" do
   assets.symlinks.setup
 end
 
-before "deploy:symlink" do
+before "deploy:assets:symlink" do
   assets.symlinks.update
 end
