@@ -4,6 +4,10 @@
   margin-top: 10px;
 }
 
+.contact form label {
+  font-size: 14px;
+  font-weight: normal;
+}
 .contact form input[type='text'],
 .contact form textarea {
   width: 304px;

@@ -1,7 +1,8 @@
 .header header .logo h1#logo {
 	text-indent: -9999px;
 	display: block;
-	width: 203px;
+	width: 273px;
+	margin-left: -30px;
 	height: 119px;
 	background-image: url(logo.png);
 }

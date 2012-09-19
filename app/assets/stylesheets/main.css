@@ -17,6 +17,7 @@ body * {
 }
 
 .main .box img {
+  margin-top: 12px;
   text-align: middle;
   float: left;
   margin-right: 12px;

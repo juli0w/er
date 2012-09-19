@@ -26,17 +26,3 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup"
-
-namespace :assets do
-  task :symlink, :roles => :app do
-    assets.create_dir
-    run <<-CMD
-      rm -rf  #{release_path}/public/uploads &&
-      ln -nfs #{shared_path}/uploads #{release_path}/public/uploads
-    CMD
-  end
-
-  task :create_dir, :roles => :app do
-    run "mkdir -p #{shared_path}/uploads"
-  end
-end
