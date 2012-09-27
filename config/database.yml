@@ -1,16 +1,16 @@
 development:
   adapter: mysql2
   database: expresso_rasante_development
-  user: root
-  password: budal33
+  username: clients
+  password: clients123
 test:
   adapter: mysql2
   database: expresso_rasante_test
-  user: root
-  password: budal33
+  username: clients
+  password: clients123
 
 production:
   adapter: mysql2
   database: expresso_rasante_production
-  user: root
-  password: budal33
+  username: clients
+  password: clients123
