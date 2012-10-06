@@ -20,6 +20,10 @@
  *= require articles
  */
 
+p {
+  font-family: 'PT Sans', 'Trebuchet MS', Tahoma, Arial, sans-serif !important;
+}
+
 label {
   float: left;
   margin-right:15px !important;
