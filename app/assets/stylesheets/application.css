@@ -20,7 +20,7 @@
  *= require articles
  */
 
-p {
+p,  .footer .right a {
   font-family: 'PT Sans', 'Trebuchet MS', Tahoma, Arial, sans-serif !important;
 }
 
