@@ -47,3 +47,7 @@ label {
   -webkit-border-radius: 7px;
   border-radius: 7px;
 }
+
+h4 {
+  font-weight: regular !important;
+}
